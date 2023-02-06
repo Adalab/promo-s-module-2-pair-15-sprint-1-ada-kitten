@@ -65,18 +65,36 @@ const kittenThree = ` <li class="card">
           </p>
         </li>`;
 
-catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+//catList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const descrSearchText = input_search_desc.value;
 
-if(kittenDesc1.includes(descrSearchText)) {
-  kittenOne
+if (kittenDesc1.includes(descrSearchText)) {
+  console.log(kittenOne);
+  catList.innerHTML = kittenOne;
+
 }
-if(kittenDesc2.includes(descrSearchText)) {
-  kittenTwo
+if (kittenDesc2.includes(descrSearchText)) {
+  catList.innerHTML = kittenTwo;
 }
 if(kittenDesc3.includes(descrSearchText)) {
-  kittenThree
+  catList.innerHTML = kittenThree;
 }
 
+const button = document.querySelector(".menu");
+
+
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+  const formElement = document.querySelector(" js-new-form");
+ 
+  if (formElement.classList.contains('collapsed')) {
+    console.log('hola');
+    form.classList.remove('collapsed');
+
+  } else {
+    form.classList.add('collapsed');
+  }
+  
+  });
