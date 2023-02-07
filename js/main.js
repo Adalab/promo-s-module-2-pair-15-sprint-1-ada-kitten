@@ -65,7 +65,7 @@ const kittenThree = ` <li class="card">
           </p>
         </li>`;
 
-//catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const descrSearchText = input_search_desc.value;
@@ -73,7 +73,6 @@ const descrSearchText = input_search_desc.value;
 if (kittenDesc1.includes(descrSearchText)) {
   console.log(kittenOne);
   catList.innerHTML = kittenOne;
-
 }
 if (kittenDesc2.includes(descrSearchText)) {
   catList.innerHTML = kittenTwo;
@@ -81,20 +80,59 @@ if (kittenDesc2.includes(descrSearchText)) {
 if(kittenDesc3.includes(descrSearchText)) {
   catList.innerHTML = kittenThree;
 }
+if(descrSearchText === '') {
+catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+}
 
 const button = document.querySelector(".menu");
+ const formElement = document.querySelector(".js-new-form");
 
 
-button.addEventListener('click', (event) => {
-  event.preventDefault();
-  const formElement = document.querySelector(" js-new-form");
- 
-  if (formElement.classList.contains('collapsed')) {
-    console.log('hola');
-    form.classList.remove('collapsed');
-
-  } else {
-    form.classList.add('collapsed');
+  function showNewCatForm () {
+    formElement.classList.remove('collapsed');
   }
+  function hideenNewCatForm () {
+    formElement.classList.add('collapsed');
+  }
+
+  button.addEventListener('click', handleClickNewCatForm);
+
+  function handleClickNewCatForm (event) {
+    event.preventDefault();
+    if (formElement.classList.contains('collapsed')) {
+      showNewCatForm ();
+    }
+    else {
+      hideenNewCatForm ();
+    }
+  }
+
+  // const buttonAdd = document.querySelector(".js-button");
+  // buttonAdd.addEventListener('click', addNewKitten);
+  // function addNewKitten (event) {
+  //   event.preventDefault();
+
+  // }
+
+  const buttonAdd = document.querySelector(".js-button");
+  const inputDesc = document.querySelector('.js-input-desc');
+  const inputPhoto = document.querySelector('.js-input-photo');
+  const inputName = document.querySelector('.js-input-name');
+  const labelMessageError = document.querySelector('.js-label-error');
   
-  });
+  buttonAdd.addEventListener('click', (event)=> {
+    const valueDesc = inputDesc.value;
+    const valueName = inputName.value;
+    const valuePhoto = inputPhoto.value;
+    event.preventDefault();
+
+    if (valueDesc === '' || valuePhoto === '' || valueName === '') 
+    {
+      labelMessageError.innerHTML = "¡Uy parece que has olvidado algo!";
+    }
+    else (!valueDesc === '' || !valuePhoto === '' || !valueName === '') 
+    {
+      labelMessageError.innerHTML = "Hola";
+    }
+
+  } );
