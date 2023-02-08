@@ -18,16 +18,8 @@ const upperCase1 = title1.toUpperCase();
 
 
 const catList = document.querySelector('.js-list');
-const kittenOne =  `<li class="card">
-          <article>
-            <img class="card_img" ${kittenImage1} alt="siames-cat" />
-            <h3 class="card_title">${upperCase1}</h3>
-            <h4 class="card_race">${kittenRace1}</h4>
-            <p class="card_description">
-            ${kittenDesc1}
-            </p>
-          </article>
-        </li>`;
+
+const kittenOne = addKittenHtmlCode(kittenName1, kittenImage1, kittenRace1, kittenDesc1);
 
 const kittenImage2 = 'src="https://dev.adalab.es/sphynx-gato.webp"';
 const kittenName2 = 'Fiona';
@@ -38,14 +30,7 @@ const kittenRace2 = 'Sphynx';
 const title2 = kittenName2;
 const upperCase2 = title2.toUpperCase();
 
-const kittenTwo = `<li class="card">
-          <img class="card_img" ${kittenImage2} alt="sphynx-cat" />
-          <h3 class="card_title">${upperCase2}</h3>
-          <h4 class="card_race">${kittenRace2}</h4>
-          <p class="card_description">
-          ${kittenDesc2}
-          </p>
-        </li>`;
+const kittenTwo = addKittenHtmlCode(kittenName2, kittenImage2, kittenRace2, kittenDesc2);
 
 const kittenImage3 = 'src="https://dev.adalab.es/maine-coon-cat.webp"';
 const kittenName3 = 'Cielo';
@@ -56,16 +41,9 @@ const kittenRace3 = 'Maine Coon';
 const title3 = kittenName3;
 const upperCase3 = title3.toUpperCase();
 
-const kittenThree = ` <li class="card">
-          <img class="card_img" ${kittenImage3} alt="maine-coon-cat" />
-          <h3 class="card_title">${upperCase3}</h3>
-          <h4 class="card_race">${kittenRace3}</h4>
-          <p class="card_description">
-          ${kittenDesc3}
-          </p>
-        </li>`;
+const kittenThree = addKittenHtmlCode(kittenName3, kittenImage3, kittenRace3, kittenDesc3);
 
-
+//const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc);
 
 const input_search_desc = document.querySelector('.js_in_search_desc');
 const descrSearchText = input_search_desc.value;
@@ -118,12 +96,18 @@ const button = document.querySelector(".menu");
   const inputDesc = document.querySelector('.js-input-desc');
   const inputPhoto = document.querySelector('.js-input-photo');
   const inputName = document.querySelector('.js-input-name');
+  const inputRace = document.querySelector('.js-input-race');
+ /* const valueDesc = inputDesc.value;
+  const valueName = inputName.value;
+  const valuePhoto = inputPhoto.value;
+  const valueRace = inputRace.value;*/
   const labelMessageError = document.querySelector('.js-label-error');
   
   buttonAdd.addEventListener('click', (event)=> {
     const valueDesc = inputDesc.value;
     const valueName = inputName.value;
     const valuePhoto = inputPhoto.value;
+    const valueRace = inputRace.value;
     event.preventDefault();
 
     if (valueDesc === '' || valuePhoto === '' || valueName === '') 
@@ -132,7 +116,24 @@ const button = document.querySelector(".menu");
     }
     else (!valueDesc === '' || !valuePhoto === '' || !valueName === '') 
     {
-      labelMessageError.innerHTML = "Hola";
+      const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc); //No funciona pintar gato nuevo
+
     }
 
-  } );
+  });
+  
+function addKittenHtmlCode(name, img, race, desc) {
+  let htmlCode = `<li class="card">`;
+  htmlCode += `<article>`;
+  htmlCode += `<img class="card_img" ${img} alt="siames-cat" />`;
+  htmlCode += `<h3 class="card_title">${name}</h3>`;
+  htmlCode += `<h4 class="card_race">${race}</h4>` ;
+  htmlCode += `<p class="card_description">${desc}
+  </p>`;
+  htmlCode += `</article >`;
+  htmlCode += `</li>`;
+  return htmlCode;  
+}
+
+
+  
