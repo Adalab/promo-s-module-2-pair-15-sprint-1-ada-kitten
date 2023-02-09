@@ -52,19 +52,19 @@ La solución del ejercicio completo se subirá al final del módulo, si en una s
 #### 2.3 Condicionales:
 
 - [x] 1. **FILTRAR:** Búsqueda por descripción.
-- [ ] 2. **LISTADO - Bonus:**: ¿Y si no hay raza?.
+- [x] 2. **LISTADO - Bonus:**: ¿Y si no hay raza?.
 
 #### 2.4 Eventos:
 
 - [x] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
-- [ ] 2. **FORMULARIO:** Adicionar nuevo gatito.
-- [ ] 3. **FORMULARIO:** Cancelar formulario.
+- [x] 2. **FORMULARIO:** Adicionar nuevo gatito.
+- [x] 3. **FORMULARIO:** Cancelar formulario.
 
 #### 2.5 Funciones I:
 
-- [ ] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
-- [ ] 2. **FORMULARIO:** Adicionar nuevo gatito.
-- [ ] 3. **LISTADO:** Crear el gatito en HTML
+- [x] 1. **FORMULARIO:** Mostrar/ocultar el formulario.
+- [x] 2. **FORMULARIO:** Adicionar nuevo gatito.
+- [x] 3. **LISTADO:** Crear el gatito en HTML
 
 #### 2.6 Funciones II:
 

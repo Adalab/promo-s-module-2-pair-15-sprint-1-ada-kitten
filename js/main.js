@@ -4,9 +4,30 @@
 // newForm.classList.remove('collapsed');
 
 
+// AQUI ACABAMOS AYER OBJETOS
+const kitten1 = {
+  img: 'https://dev.adalab.es/gato-siames.webp',
+  name: 'Anastacio',
+  desc: `Porte elegante, su patrón de color tan característico y sus ojos
+de un azul intenso, pero su historia se remonta a Asía al menos
+hace 500 años, donde tuvo su origen muy posiblemente.`,
+  race: 'Siamés',
+  
+  addKittenHtmlCode = function () {
+  const htmlCode = `<li class="card">
+   <article>
+   <img class="card_img" src= "${kitten1.img}" alt="siames-cat" />
+   <h3 class="card_title">${kitten1.name}</h3>
+   <h4 class="card_race">${kitten1.race}</h4>
+   <p class="card_description">${kitten1.desc}
+  </p>
+   </article >
+   </li>`;
+  return htmlCode;  
+}
+};
 
-
-const kittenImage1 = 'src= "https://dev.adalab.es/gato-siames.webp"';
+const kittenImage1 = 'https://dev.adalab.es/gato-siames.webp';
 const kittenName1 = 'Anastacio';
 const kittenDesc1 = `Porte elegante, su patrón de color tan característico y sus ojos
 de un azul intenso, pero su historia se remonta a Asía al menos
@@ -15,13 +36,12 @@ const kittenRace1 = 'Siamés';
 const title1 = kittenName1;
 const upperCase1 = title1.toUpperCase();
 
-
-
 const catList = document.querySelector('.js-list');
+const kitten1 = addKittenHtmlCode(kitten1);
 
-const kittenOne = addKittenHtmlCode(kittenName1, kittenImage1, kittenRace1, kittenDesc1);
 
-const kittenImage2 = 'src="https://dev.adalab.es/sphynx-gato.webp"';
+
+const kittenImage2 = 'https://dev.adalab.es/sphynx-gato.webp';
 const kittenName2 = 'Fiona';
 const kittenDesc2 = `Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
 hasta con pinta de alienígena han llegado a definir a esta raza
@@ -30,9 +50,9 @@ const kittenRace2 = 'Sphynx';
 const title2 = kittenName2;
 const upperCase2 = title2.toUpperCase();
 
-const kittenTwo = addKittenHtmlCode(kittenName2, kittenImage2, kittenRace2, kittenDesc2);
+const kittenTwo = addKittenHtmlCode(upperCase2, kittenImage2, kittenRace2, kittenDesc2);
 
-const kittenImage3 = 'src="https://dev.adalab.es/maine-coon-cat.webp"';
+const kittenImage3 = 'https://dev.adalab.es/maine-coon-cat.webp';
 const kittenName3 = 'Cielo';
 const kittenDesc3 = `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
 bella mirada se ha convertido en una de sus señas de identidad.
@@ -41,7 +61,7 @@ const kittenRace3 = 'Maine Coon';
 const title3 = kittenName3;
 const upperCase3 = title3.toUpperCase();
 
-const kittenThree = addKittenHtmlCode(kittenName3, kittenImage3, kittenRace3, kittenDesc3);
+const kittenThree = addKittenHtmlCode(upperCase3, kittenImage3, kittenRace3, kittenDesc3);
 
 //const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc);
 
@@ -50,7 +70,7 @@ const descrSearchText = input_search_desc.value;
 
 if (kittenDesc1.includes(descrSearchText)) {
   console.log(kittenOne);
-  catList.innerHTML = kittenOne;
+  catList.innerHTML = kitten1;
 }
 if (kittenDesc2.includes(descrSearchText)) {
   catList.innerHTML = kittenTwo;
@@ -59,7 +79,7 @@ if(kittenDesc3.includes(descrSearchText)) {
   catList.innerHTML = kittenThree;
 }
 if(descrSearchText === '') {
-catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+catList.innerHTML = kitten1 + kittenTwo + kittenThree;
 }
 
 const button = document.querySelector(".menu");
@@ -102,6 +122,21 @@ const button = document.querySelector(".menu");
   const valuePhoto = inputPhoto.value;
   const valueRace = inputRace.value;*/
   const labelMessageError = document.querySelector('.js-label-error');
+
+
+function addKittenHtmlCode(name, img, race, desc) {
+  let htmlCode = `<li class="card">`;
+  htmlCode += `<article>`;
+  htmlCode += `<img class="card_img" src= "${img}" alt="siames-cat" />`;
+  htmlCode += `<h3 class="card_title">${name}</h3>`;
+  htmlCode += `<h4 class="card_race">${race}</h4>` ;
+  htmlCode += `<p class="card_description">${desc}
+  </p>`;
+  htmlCode += `</article >`;
+  htmlCode += `</li>`;
+  return htmlCode;  
+}
+ 
   
   buttonAdd.addEventListener('click', (event)=> {
     const valueDesc = inputDesc.value;
@@ -116,24 +151,13 @@ const button = document.querySelector(".menu");
     }
     else (!valueDesc === '' || !valuePhoto === '' || !valueName === '') 
     {
-      const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc); //No funciona pintar gato nuevo
-
+      const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc); 
+      catList.innerHTML += addKittenForm;
     }
-
+    
   });
   
-function addKittenHtmlCode(name, img, race, desc) {
-  let htmlCode = `<li class="card">`;
-  htmlCode += `<article>`;
-  htmlCode += `<img class="card_img" ${img} alt="siames-cat" />`;
-  htmlCode += `<h3 class="card_title">${name}</h3>`;
-  htmlCode += `<h4 class="card_race">${race}</h4>` ;
-  htmlCode += `<p class="card_description">${desc}
-  </p>`;
-  htmlCode += `</article >`;
-  htmlCode += `</li>`;
-  return htmlCode;  
-}
+
 
 
   
