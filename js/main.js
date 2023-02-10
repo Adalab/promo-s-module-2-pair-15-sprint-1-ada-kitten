@@ -1,10 +1,8 @@
 'use strict';
 
-// const newForm = document.querySelector('.js-new-form');
-// newForm.classList.remove('collapsed');
 
 
-// AQUI ACABAMOS AYER OBJETOS
+// A OBJETOS
 const kitten1 = {
   img: 'https://dev.adalab.es/gato-siames.webp',
   name: 'Anastacio',
@@ -12,76 +10,60 @@ const kitten1 = {
 de un azul intenso, pero su historia se remonta a Asía al menos
 hace 500 años, donde tuvo su origen muy posiblemente.`,
   race: 'Siamés',
+}
   
-  addKittenHtmlCode = function () {
-  const htmlCode = `<li class="card">
-   <article>
-   <img class="card_img" src= "${kitten1.img}" alt="siames-cat" />
-   <h3 class="card_title">${kitten1.name}</h3>
-   <h4 class="card_race">${kitten1.race}</h4>
-   <p class="card_description">${kitten1.desc}
-  </p>
-   </article >
-   </li>`;
-  return htmlCode;  
-}
-};
-
-const kittenImage1 = 'https://dev.adalab.es/gato-siames.webp';
-const kittenName1 = 'Anastacio';
-const kittenDesc1 = `Porte elegante, su patrón de color tan característico y sus ojos
-de un azul intenso, pero su historia se remonta a Asía al menos
-hace 500 años, donde tuvo su origen muy posiblemente.`;
-const kittenRace1 = 'Siamés';
-const title1 = kittenName1;
-const upperCase1 = title1.toUpperCase();
-
 const catList = document.querySelector('.js-list');
-const kitten1 = addKittenHtmlCode(kitten1);
+const kittenOne = addKittenHtmlCode(kitten1.name,kitten1.img, kitten1.race, kitten1.desc);
+
+
+const kitten2 = {
+  img: 'https://dev.adalab.es/sphynx-gato.webp',
+  name: 'Fiona',
+  desc: `Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
+  hasta con pinta de alienígena han llegado a definir a esta raza
+  gatuna que se caracteriza por la «ausencia» de pelo. `,
+  race: 'Sphynx',
+}
+const kittenTwo = addKittenHtmlCode(kitten2.name,kitten2.img, kitten2.race, kitten2.desc);
+
+const kitten3 = {
+  img: 'https://dev.adalab.es/maine-coon-cat.webp',
+  name: 'Cielo',
+  desc: `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
+  bella mirada se ha convertido en una de sus señas de identidad.
+  Sus ojos son grandes y las orejas resultan largas y en punta. `,
+  race: 'Maine Coon',
+}
+const kittenThree = addKittenHtmlCode(kitten3.name,kitten3.img, kitten3.race, kitten3.desc);
+
+catList.innerHTML = kittenOne + kittenTwo + kittenThree;
 
 
 
-const kittenImage2 = 'https://dev.adalab.es/sphynx-gato.webp';
-const kittenName2 = 'Fiona';
-const kittenDesc2 = `Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
-hasta con pinta de alienígena han llegado a definir a esta raza
-gatuna que se caracteriza por la «ausencia» de pelo. `;
-const kittenRace2 = 'Sphynx';
-const title2 = kittenName2;
-const upperCase2 = title2.toUpperCase();
-
-const kittenTwo = addKittenHtmlCode(upperCase2, kittenImage2, kittenRace2, kittenDesc2);
-
-const kittenImage3 = 'https://dev.adalab.es/maine-coon-cat.webp';
-const kittenName3 = 'Cielo';
-const kittenDesc3 = `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
-bella mirada se ha convertido en una de sus señas de identidad.
-Sus ojos son grandes y las orejas resultan largas y en punta. `;
-const kittenRace3 = 'Maine Coon';       
-const title3 = kittenName3;
-const upperCase3 = title3.toUpperCase();
-
-const kittenThree = addKittenHtmlCode(upperCase3, kittenImage3, kittenRace3, kittenDesc3);
-
-//const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc);
-
+// BUSCADOR
 const input_search_desc = document.querySelector('.js_in_search_desc');
-const descrSearchText = input_search_desc.value;
+const handleClickSearch = (event) => {
+  event.preventDefault();
+  const descrSearchText = input_search_desc.value;
+  if (kitten1.desc.includes(descrSearchText)) {
+    console.log(kitten1);
+    catList.innerHTML = kittenOne;
+  }
+  if (kitten2.desc.includes(descrSearchText)) {
+    catList.innerHTML = kittenTwo;
+  }
+  if(kitten3.desc.includes(descrSearchText)) {
+    catList.innerHTML = kittenThree;
+  }
+  if(descrSearchText === '') {
+  catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+  }
+}
 
-if (kittenDesc1.includes(descrSearchText)) {
-  console.log(kittenOne);
-  catList.innerHTML = kitten1;
-}
-if (kittenDesc2.includes(descrSearchText)) {
-  catList.innerHTML = kittenTwo;
-}
-if(kittenDesc3.includes(descrSearchText)) {
-  catList.innerHTML = kittenThree;
-}
-if(descrSearchText === '') {
-catList.innerHTML = kitten1 + kittenTwo + kittenThree;
-}
+const btnSearch = document.querySelector('.js-button-search');
+btnSearch.addEventListener('click', handleClickSearch);
 
+//COLLAPSE
 const button = document.querySelector(".menu");
  const formElement = document.querySelector(".js-new-form");
 
@@ -105,13 +87,7 @@ const button = document.querySelector(".menu");
     }
   }
 
-  // const buttonAdd = document.querySelector(".js-button");
-  // buttonAdd.addEventListener('click', addNewKitten);
-  // function addNewKitten (event) {
-  //   event.preventDefault();
-
-  // }
-
+//ADD NEW CAT
   const buttonAdd = document.querySelector(".js-button");
   const inputDesc = document.querySelector('.js-input-desc');
   const inputPhoto = document.querySelector('.js-input-photo');
@@ -138,20 +114,28 @@ function addKittenHtmlCode(name, img, race, desc) {
 }
  
   
-  buttonAdd.addEventListener('click', (event)=> {
-    const valueDesc = inputDesc.value;
+buttonAdd.addEventListener('click', (event) => {
+   event.preventDefault();
+    /*const valueDesc = inputDesc.value;
     const valueName = inputName.value;
     const valuePhoto = inputPhoto.value;
-    const valueRace = inputRace.value;
-    event.preventDefault();
+  const valueRace = inputRace.value;*/
+  
+  const newKitten = {
+    img: inputPhoto.value,
+    name: inputName.value,
+    desc: inputDesc.value,
+    race: inputRace.value,
+  };
+    
 
-    if (valueDesc === '' || valuePhoto === '' || valueName === '') 
+    if (newKitten.desc === '' || newKitten.img === '' || newKitten.name === '') 
     {
       labelMessageError.innerHTML = "¡Uy parece que has olvidado algo!";
     }
-    else (!valueDesc === '' || !valuePhoto === '' || !valueName === '') 
+    else (!newKitten.desc === '' || !newKitten.img === '' || !newKitten.name === '') 
     {
-      const addKittenForm = addKittenHtmlCode(valueName, valuePhoto, valueRace, valueDesc); 
+      const addKittenForm = addKittenHtmlCode(newKitten.name, newKitten.img, newKitten.race, newKitten.desc); 
       catList.innerHTML += addKittenForm;
     }
     
