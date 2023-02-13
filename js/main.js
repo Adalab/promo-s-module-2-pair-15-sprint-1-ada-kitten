@@ -3,41 +3,66 @@
 
 
 // A OBJETOS
-const kitten1 = {
-  img: 'https://dev.adalab.es/gato-siames.webp',
-  name: 'Anastacio',
-  desc: `Porte elegante, su patrón de color tan característico y sus ojos
-de un azul intenso, pero su historia se remonta a Asía al menos
-hace 500 años, donde tuvo su origen muy posiblemente.`,
-  race: 'Siamés',
-}
-  
 const catList = document.querySelector('.js-list');
-const kittenOne = addKittenHtmlCode(kitten1.name,kitten1.img, kitten1.race, kitten1.desc);
+const kittenDataList = [
+  
+       const kitten1 = {
+        img: 'https://dev.adalab.es/gato-siames.webp',
+        name: 'Anastacio',
+        desc: `Porte elegante, su patrón de color tan característico y sus ojos
+      de un azul intenso, pero su historia se remonta a Asía al menos
+      hace 500 años, donde tuvo su origen muy posiblemente.`,
+        race: 'Siamés',
+      },
+        
+      
+      // const kittenOne = addKittenHtmlCode(kitten1.name,kitten1.img, kitten1.race, kitten1.desc);
 
 
-const kitten2 = {
-  img: 'https://dev.adalab.es/sphynx-gato.webp',
-  name: 'Fiona',
-  desc: `Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
-  hasta con pinta de alienígena han llegado a definir a esta raza
-  gatuna que se caracteriza por la «ausencia» de pelo. `,
-  race: 'Sphynx',
-}
-const kittenTwo = addKittenHtmlCode(kitten2.name,kitten2.img, kitten2.race, kitten2.desc);
+       kitten2 = {
+        img: 'https://dev.adalab.es/sphynx-gato.webp',
+        name: 'Fiona',
+        desc: `Produce fascinación y curiosidad. Exótico, raro, bello, extraño…
+        hasta con pinta de alienígena han llegado a definir a esta raza
+        gatuna que se caracteriza por la «ausencia» de pelo. `,
+        race: 'Sphynx',
+      },
+      // const kittenTwo = addKittenHtmlCode(kitten2.name,kitten2.img, kitten2.race, kitten2.desc);
 
-const kitten3 = {
-  img: 'https://dev.adalab.es/maine-coon-cat.webp',
-  name: 'Cielo',
-  desc: `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
-  bella mirada se ha convertido en una de sus señas de identidad.
-  Sus ojos son grandes y las orejas resultan largas y en punta. `,
-  race: 'Maine Coon',
-}
-const kittenThree = addKittenHtmlCode(kitten3.name,kitten3.img, kitten3.race, kitten3.desc);
+       kitten3 = {
+        img: 'https://dev.adalab.es/maine-coon-cat.webp',
+        name: 'Cielo',
+        desc: `Tienen la cabeza cuadrada y los ojos simétricos, por lo que su
+        bella mirada se ha convertido en una de sus señas de identidad.
+        Sus ojos son grandes y las orejas resultan largas y en punta. `,
+        race: 'Maine Coon',
+      }
+      // const kittenThree = addKittenHtmlCode(kitten3.name,kitten3.img, kitten3.race, kitten3.desc);
 
-catList.innerHTML = kittenOne + kittenTwo + kittenThree;
+];
 
+
+
+//  catList.innerHTML = kittenDataList;
+
+// function renderKittenList (kittenDataList[2]) {
+ for (let i=0; i<kittenDataList.length; i++){
+  catList.innerHTML += 
+ 
+  `<li class="card">
+  <article>
+  <img class="card_img" src= "${kittenDataList[i].img}" alt="siames-cat" />
+  <h3 class="card_title">${kittenDataList[i].name}</h3>
+  <h4 class="card_race">${kittenDataList[i].race}</h4>
+  <p class="card_description">${kittenDataList[i].desc}
+  </p>
+  </article >
+  </li>`; 
+  }
+
+//  }
+  
+// }
 
 
 // BUSCADOR
